@@ -26,6 +26,7 @@
  - [Contributing](./CONTRIBUTING.md)
  - [Authors](#authors)
  - [Acknowledgements](#acknowledgements)
+ - [Sources](#sources)
 
 ## About <a name = "about"></a>
 The aim of this project is to create freely-reusable, free
