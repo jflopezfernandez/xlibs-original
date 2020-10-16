@@ -16,3 +16,6 @@ repository!
 This library is a part of the [xLibs][] project.
 
 </div>
+
+  [xLibs]: https://github.com/jflopezfernandez/xlibs
+  "xLibs Project Repository Home"
