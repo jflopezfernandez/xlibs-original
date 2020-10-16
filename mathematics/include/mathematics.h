@@ -23,9 +23,14 @@
 #ifndef PROJECT_INCLUDES_MATHEMATICS_H
 #define PROJECT_INCLUDES_MATHEMATICS_H
 
-#ifndef PROJECT_INCLUDES_LIBCX_TYPES_H
-#include "types.h"
-#endif
+// #ifndef PROJECT_INCLUDES_LIBCX_TYPES_H
+// #include "types.h"
+// #endif
+
+typedef enum {
+    false = 0,
+    true  = 1
+} bool_t;
 
 /**
  * This macro definition is required for Doxygen to be able

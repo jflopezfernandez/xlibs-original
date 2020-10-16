@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include <libcx.h>
+#include <mathematics.h>
 
 /**
  * Absolute Value
@@ -126,9 +126,9 @@ bool_t is_prime(int n) {
 
     for (int i = 2; i < n; ++i) {
         if (n % i == 0) {
-            return false;
+            return true;
         }
     }
 
-    return true;
+    return false;
 }
