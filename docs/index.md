@@ -1,5 +1,11 @@
+<div align="center">
+
 # xLibs C Library Extension Modules
 The xLibs project is a collection of C language extension libraries to increase productivity without sacrificing performance.
+
+</div>
+
+---
 
 ## Table of Contents
  - [About](#about)
