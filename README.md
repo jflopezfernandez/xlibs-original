@@ -133,6 +133,19 @@ $ make
 $ sudo make install
 ```
 
+  > Note: The above instructions install the libraries into
+  the `/usr/local/lib` directory, which is not in the
+  default runtime path of executables you compile. To be
+  able to use the libraries, you must either set the prefix
+  to `--prefix=/usr` during configuration, or configure the
+  linker's runtime path for the executable during
+  compilation. For gcc, you can do this with the
+  `-Wl,rpath,/usr/local/lib` option.
+
+For additional information and examples on linking your
+application code against the libraries, please consult the
+[Using the Libraries in Your Code](#using) section below.
+
 #### The Long Version
 The goal of this section is to expand upon the short version
 described above, providing context for the design and
@@ -145,7 +158,111 @@ must then first invoke [Autoconf][Autotools FAQ]. This takes
 care of calling each subunit of the Autoconf and Automake
 toolset, preparing the project for configuration.
 
+<!--
 
+These sections will be expanded as soon as the code base
+grows where more meaningful and compelling examples can be
+used.
+
+-->
+
+### Using the Libraries in Your Code <a name = "using"></a>
+The following example assumes you have carried out the plain
+installation described in the short version of the [Installing](#installing) section.
+
+Suppose you have the following code, which for each integer
+argument supplied to the program, prints `True` or
+`False` to standard output, depending on whether the given
+argument is a [prime number][Prime Number].
+
+ > The following program performs absolutely no error-checking.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#include <xlibs/mathematics.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc == 1) {
+        fprintf(stderr, "No input(s).\n");
+        return EXIT_FAILURE;
+    }
+
+    while (*++argv) {
+        int n = atoi(*argv);
+        printf("Prime(%d): %s\n", n, ((is_prime(n) == 1) ? "Yes" : "No"));
+    }
+
+    return EXIT_SUCCESS;
+}
+```
+Compiling this program can be done the usual way, by calling
+the system compiler. This example uses [gcc][].
+```bash
+$ gcc -std=c17 -Wall -Wextra -Wpedantic -O3 -march=native -c -o main.o main.c
+```
+You should now have an object file named `main.o` sitting in
+your current directory.
+```bash
+$ ls
+main.c main.o
+```
+If you call the compiler as you normally would to produce
+the final executable, the command should fail, producing an
+error message similar to the following.
+```bash
+$ gcc -std=c17 -Wall -Wextra -Wpedantic -O3 -march=native -o is_prime main.o -lxm
+/usr/bin/ld: /tmp/ccB6R8sM.o: in function `main':
+main.c:(.text.startup+0x32): undefined reference to `is_prime'
+collect2: error: ld returned 1 exit status
+```
+
+ > The `-lxm` flag tells the compiler to link the program
+ using the symbols exported by the `libxm.so` library, which
+ is the library module built by the `make` command during
+ compilation. The xMath linker flag `-lxm` is an homage to
+ the math module included in the C standard library, which
+ is linked using the `-lm` command.
+
+As mentioned in the installation notes above, this is
+because the default installation installs the library
+modules in your `/usr/local/lib` directory, which is not in
+the default linker path.
+
+Modifying the previous compilation command to allow us to
+link the object file and produce the final executable is
+easy. The only modification to the compilation commands
+above we need to make is to notify the linker we want to
+include the `/usr/local/lib` directory in the executable's
+runtime path.
+
+GCC uses `ld` as the default linker, which allows for the
+configuration of a linked executable's runtime path via the
+`-rpath <path>` flag.
+
+To pass this information to `ld` when compiling with gcc, we
+use the `-Wl,<command>[<command>,...]` flag when linking.
+GCC interprets each comma in the list passed in to `-Wl` as
+a space, so `-rpath /usr/local/lib` becomes `-Wl,-rpath,/usr/local/lib`.
+
+Thus, our final command for linking and producing our
+executable is the following.
+
+```bash
+$ gcc -std=c17 -Wall -Wextra -Wpedantic -O3 -march=native -Wl,-rpath,/usr/local/lib -o is_prime main.o -lxm
+```
+
+We can now use our `is_prime` application to test whether
+any positve integer is prime.
+
+```bash
+$ is_prime 477
+Yes
+$ is_prime 4
+No
+```
 
 <!--
 
@@ -153,8 +270,7 @@ These sections will be expanded as soon as the code base
 grows where more meaningful and compelling examples can be
 used.
 
-### Using the Libraries in Your Code <a name = "using"></a>
-***\<IN PROGRESS\>***
+
 
 ## Examples
 ***\<IN PROGRESS\>***
@@ -163,7 +279,6 @@ used.
 A helpful example.
 
 ***\<IN PROGRESS\>***
-
 -->
 
 ## Authors <a name = "author"></a>
@@ -192,6 +307,9 @@ the effort, many times over.
 1. Jenkins, B. (2005, January 22). Hash Functions for Hash Table Lookup [Personal Blog]. Random Thoughts by Bob Jenkins. https://www.burtleburtle.net/bob/hash/evahash.html
 
 1. Jenkins, B. (2013, September 22). Hash Functions and Block Ciphers [Personal Blog]. Random Thoughts by Bob Jenkins. https://www.burtleburtle.net/bob/index.html
+
+  [Prime Number]: https://en.wikipedia.org/wiki/Prime_number
+  "Prime Number - Wikipedia"
 
   [Bob Jenkins]: https://www.burtleburtle.net/bob/
   "Bob Jenkins' Home Page"
