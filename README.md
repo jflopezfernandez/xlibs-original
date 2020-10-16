@@ -42,16 +42,29 @@ dynamic memory allocation; more specifically, this library
 ensures that the said memory allocation succeeded.
 
 Besides this one primary-dependency module, there are two
-library extension modules at the moment.
+library extension modules at the moment: the [Strings](#strings_module)
+module and the [Math](#math_module) module. There are
+several more planned, however.
 
-### Strings
+The following list gives an overview of the library modules
+currently in the planning, design, and implementation stage.
+
+### Memory <a name = "memory_module"></a>
+While every module within the project will likely depend on
+this module, this module can also prove extremely handy for
+application developers, as the return values from memory-
+allocation functions will be checke implicitly (from their
+point of view), eliding the otherwise-necessary boilerplate
+after each call to `malloc(3)`.
+
+### Strings <a name = "strings_module"></a>
 The strings library module is meant to provide the
 flexibility of straight-forward string operations enjoyed by
 PHP, Python, and C++ programmers (particularly simple string
 concatenation), without the need to invoke the bulk that any
 of those languages imply.
 
-### Math
+### Math <a name = "math_module"></a>
 The mathematics library module is meant to provide as
 performant a foundation as possible, including a catalog of
 sorting algorithms and non-cryptographic hash functions for
@@ -61,7 +74,20 @@ table lookups.
 ***\<IN PROGRESS\>***
 
 ### Prerequisites <a name = "prerequisites"></a>
-***\<IN PROGRESS\>***
+The library modules have been written in standards-compliant
+C, with no extensions whatsoever, save for the GCC compiler
+attributes declared in each function prototype.
+
+This shouldn't be a problem for most people, as clang
+understands all of the compiler attributes used in the code.
+
+Support for compiling and using the libraries on Windows is
+not supported at the moment, although it would only be a
+matter of minutes to add support for MSVC, as the compiler
+attributes are defined using preprocessor macros to help
+Doxygen parse the function prototypes. Extending these
+preprocessor directives to allow for conditional inclusion
+of GCC function attributes would not take long at all.
 
 ### Installing <a name = "installing"></a>
 ***\<IN PROGRESS\>***
@@ -108,3 +134,5 @@ the effort, many times over.
   "Bob Jenkins' Home Page"
   [JFLF]: https://github.com/jflopezfernandez
   "jflopezfernandez GitHub Profile"
+  [malloc(3)]: https://man7.org/linux/man-pages/man3/malloc.3.html
+  "malloc(3)"
