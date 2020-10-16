@@ -1,1 +1,1 @@
-SUBDIRS = mathematics
+SUBDIRS = mathematics strings
