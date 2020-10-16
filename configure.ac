@@ -26,6 +26,9 @@ AC_CONFIG_FILES([
     mathematics/Makefile
     mathematics/include/Makefile
     mathematics/src/Makefile
+    strings/Makefile
+    strings/include/Makefile
+    strings/src/Makefile
 ])
 
 # Output configuration-specific build files.
