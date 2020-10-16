@@ -1,22 +1,5 @@
-
-<h2 align="center">xLibs</h2>
-
-<div align="center">
-
-![GitHub](https://img.shields.io/github/license/jflopezfernandez/xlibs?color=success)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/jflopezfernandez/xlibs?sort=semver)
-![GitHub issues](https://img.shields.io/github/issues/jflopezfernandez/xlibs)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/jflopezfernandez/xlibs)
-![GitHub last commit](https://img.shields.io/github/last-commit/jflopezfernandez/xlibs?color=success)
-
-</div>
-
----
-
-<p align="center">
-    The xLibs project is a collection of C language extension libraries to increase productivity without sacrificing performance.
-    <br />
-</p>
+# xLibs C Library Extension Modules
+The xLibs project is a collection of C language extension libraries to increase productivity without sacrificing performance.
 
 ## Table of Contents
  - [About](#about)
