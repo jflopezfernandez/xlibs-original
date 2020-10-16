@@ -258,10 +258,38 @@ We can now use our `is_prime` application to test whether
 any positve integer is prime.
 
 ```bash
-$ is_prime 477
-Yes
-$ is_prime 4
-No
+$ ./is_prime 477
+Prime(477): No
+$ ./is_prime 4
+Prime(4): No
+```
+
+We can use the `seq` command with our application to see
+which of the first twenty positive integers are prime
+numbers.
+
+```bash
+$ ./is_prime $(seq --separator=' ' 20)
+Prime(1): Yes
+Prime(2): Yes
+Prime(3): Yes
+Prime(4): No
+Prime(5): Yes
+Prime(6): No
+Prime(7): Yes
+Prime(8): No
+Prime(9): No
+Prime(10): No
+Prime(11): Yes
+Prime(12): No
+Prime(13): Yes
+Prime(14): No
+Prime(15): No
+Prime(16): No
+Prime(17): Yes
+Prime(18): No
+Prime(19): Yes
+Prime(20): No
 ```
 
 <!--
