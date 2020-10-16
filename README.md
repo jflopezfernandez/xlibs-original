@@ -21,6 +21,7 @@
 ## Table of Contents
  - [About](#about)
  - [Libraries](#libraries)
+ - [Supported Platforms](#supported_platforms)
  - [Getting Started](#getting_started)
  - [TODO](./TODO.md)
  - [Contributing](./CONTRIBUTING.md)
@@ -34,6 +35,19 @@ software library modules that application developers can
 leverage to avoid recurring to much more general languages
 or libraries, due to the computational- and memory-related
 costs which such generality requires.
+
+## Supported Platforms <a name="supported_platforms"></a>
+The initial release of the xLibs library modules is targeted
+towards Linux machines running on x86-64-compatible
+processors.
+
+The project is developed using [gcc][], with some modules
+written in assembly language directly and assembled with
+[nasm][].
+
+The ideal is to be able to support any platform, as long as
+it is capable of compiling valid C programs, and this will
+be our goal after the project's initial release.
 
 ## Libraries <a name = "librarier"></a>
 This project itself comprises several distinct library
@@ -72,7 +86,10 @@ sorting algorithms and non-cryptographic hash functions for
 table lookups.
 
 ## Getting Started <a name = "getting_started"></a>
-***\<IN PROGRESS\>***
+> Note: The [xLibs][] project is under active development, so this
+information may change in the comming weeks or months. A
+plan for a stable release, including a long-term support
+schedule and feature set, is in the works.
 
 ### Prerequisites <a name = "prerequisites"></a>
 The library modules have been written in standards-compliant
@@ -91,7 +108,50 @@ preprocessor directives to allow for conditional inclusion
 of GCC function attributes would not take long at all.
 
 ### Installing <a name = "installing"></a>
-***\<IN PROGRESS\>***
+The project uses [GNU][] [Autotools][Autotools FAQ] toolset
+to allow for easy configuration, compilation, and
+installation.
+
+#### The Short Version
+The commands to install the project in your local system are
+as follows.
+
+ > Note: Most of these commands will produce a (possibly
+ massive) amount of output; do not be alarmed. If there is
+ an error during the build process, this will be one of the
+ last messages of the output.
+
+If you run into any problems during the build, please [let
+us know][Create an Issue] by creating an issue.
+
+```bash
+$ git clone https://github.com/jflopezfernandez/xlibs.git
+$ cd xlibs
+$ autoreconf --install
+$ ./configure
+$ make
+$ sudo make install
+```
+
+#### The Long Version
+The goal of this section is to expand upon the short version
+described above, providing context for the design and
+implementation decisions affecting the build chain and
+installation process.
+
+Since we are still in pre-release, the only way to obtain
+the project sources is to clone the project repository. You
+must then first invoke [Autoconf][Autotools FAQ]. This takes
+care of calling each subunit of the Autoconf and Automake
+toolset, preparing the project for configuration.
+
+
+
+<!--
+
+These sections will be expanded as soon as the code base
+grows where more meaningful and compelling examples can be
+used.
 
 ### Using the Libraries in Your Code <a name = "using"></a>
 ***\<IN PROGRESS\>***
@@ -103,6 +163,8 @@ of GCC function attributes would not take long at all.
 A helpful example.
 
 ***\<IN PROGRESS\>***
+
+-->
 
 ## Authors <a name = "author"></a>
 This is developed and maintained by [Jose Fernando Lopez Fernandez][JFLF].
@@ -135,5 +197,16 @@ the effort, many times over.
   "Bob Jenkins' Home Page"
   [JFLF]: https://github.com/jflopezfernandez
   "jflopezfernandez GitHub Profile"
+  
   [malloc(3)]: https://man7.org/linux/man-pages/man3/malloc.3.html
   "malloc(3)"
+
+  [Free Software Foundation]: https://www.fsf.org/ "Free Software Foundation"
+  [GNU]: https://www.gnu.org/ "GNU - Home"
+  [Autotools FAQ]: https://www.gnu.org/software/automake/faq/autotools-faq.html "Autotools FAQ"
+  [gcc]: https://gcc.gnu.org/ "GCC Home"
+
+  [nasm]: https://www.nasm.us/ "NASM Home"
+
+  [xLibs]: https://github.com/jflopezfernandez/xlibs
+  "xLibs Project Home"
