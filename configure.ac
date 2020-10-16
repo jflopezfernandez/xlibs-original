@@ -1,6 +1,5 @@
 AC_PREREQ([2.69])
 AC_INIT([xlibs], [0.1.0], [jflopezfernandez@gmail.com])
-LT_INIT
 AM_INIT_AUTOMAKE([foreign -Wall])
 
  # Configure Source and Header Files
@@ -11,6 +10,9 @@ AC_CONFIG_HEADER([mathematics/include/config.h])
 AM_PROG_AR
 AC_PROG_CC
 AC_PROG_INSTALL
+
+# Initialize Libtool.
+LT_INIT
 
 # Check for libraries.
 #
