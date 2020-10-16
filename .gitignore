@@ -1,6 +1,9 @@
 # IDE Configurations
 **/.vscode/
 
+# Personal Files
+configure-project
+
 # Prerequisites
 *.d
 
@@ -79,4 +82,5 @@ depcomp
 install-sh
 libtool
 ltmain.sh
-
+autoscan.log
+configure.scan

@@ -1,5 +1,5 @@
 /*
- * Xlibs - C Programming Language Extensions Library
+ * xlibs - C Programming Language Extensions Libraries
  * Copyright (C) 2020 Jose Fernando Lopez Fernandez
  * 
  * This program is free software: you can redistribute it
@@ -23,6 +23,25 @@
 #ifndef PROJECT_INCLUDES_XLIBS_STRINGS_H
 #define PROJECT_INCLUDES_XLIBS_STRINGS_H
 
+typedef enum {
+    LEVENSHTEIN_DISTANCE,
+    LONGEST_COMMON_SUBSEQUENCE,
+    HAMMING_DISTANCE,
+    DAMERAU_LEVENSHTEIN_DISTANCE,
+    JARO_DISTANCE
+} edit_distance_type_t;
+
+// size_t calculate_levenshtein_distance(const char* a, const char* b);
+// size_t calculate_longest_common_subsequence_distance(const char* a, const char* b);
+// size_t calculate_hamming_distance(const char* a, const char* b);
+// size_t calculate_damerau_levenshtein_distance(const char* a, const char* b);
+// size_t calculate_jaro_distance(const char* a, const char* b);
+
+//typedef size_t (*edit_distance_function_t)(const char*, const char*);
+
+//edit_distance_function_t get_edit_distance_function(edit_distance_type_t edit_distance_type);
+
+size_t calculate_edit_distance(edit_distance_type_t edit_distance_type, const char* a, const char* b);
 
 /*
  * Calculate the length of the given string.
@@ -36,7 +55,7 @@
  *
  */
 size_t
-__attributes_string_length
+__attribute__((nonnull(1)))
 string_length(const char* string);
 
 #endif /** PROJECT_INCLUDES_XLIBS_STRINGS_H */

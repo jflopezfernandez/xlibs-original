@@ -1,5 +1,5 @@
 /*
- * Xlibs - C Programming Language Extensions Library
+ * xlibs - C Programming Language Extensions Libraries
  * Copyright (C) 2020 Jose Fernando Lopez Fernandez
  * 
  * This program is free software: you can redistribute it
