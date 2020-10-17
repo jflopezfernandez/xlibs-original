@@ -23,6 +23,16 @@
 #ifndef PROJECT_INCLUDES_XLIBS_STRINGS_H
 #define PROJECT_INCLUDES_XLIBS_STRINGS_H
 
+/**
+ * Valid Metric Distance Metrics
+ *
+ * This enum defines the valid edit distance calculation
+ * algorithms accepted by the calculate_edit_distance()
+ * function.
+ *
+ * @typedef edit_distance_t
+ *
+ */
 typedef enum {
     LEVENSHTEIN_DISTANCE,
     LONGEST_COMMON_SUBSEQUENCE,
@@ -31,16 +41,22 @@ typedef enum {
     JARO_DISTANCE
 } edit_distance_type_t;
 
-// size_t calculate_levenshtein_distance(const char* a, const char* b);
-// size_t calculate_longest_common_subsequence_distance(const char* a, const char* b);
-// size_t calculate_hamming_distance(const char* a, const char* b);
-// size_t calculate_damerau_levenshtein_distance(const char* a, const char* b);
-// size_t calculate_jaro_distance(const char* a, const char* b);
-
-//typedef size_t (*edit_distance_function_t)(const char*, const char*);
-
-//edit_distance_function_t get_edit_distance_function(edit_distance_type_t edit_distance_type);
-
+/*
+ * Calculate the edit distance of two given strings.
+ *
+ * In addition to the two input string arguments, this
+ * function takes takes a third argument, used to specify
+ * the edit distance algorithm to use when calculating the
+ * metric.
+ *
+ * @param[in] edit_distance_type    The edit distance metric to use.
+ * @param[in] a                     The first string to compare.
+ * @param[in] b                     The second string to compare.
+ *
+ * @returns The edit distance between a and b, as calculated
+ * by the edit distance algorithm specified.
+ *
+ */
 size_t calculate_edit_distance(edit_distance_type_t edit_distance_type, const char* a, const char* b);
 
 /*
