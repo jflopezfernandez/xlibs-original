@@ -22,6 +22,7 @@ This library is a part of the [xLibs][] project.
 
 ## Table of Contents
  * [Edit Distance](#edit-distance)
+ * [String Searching](#string-searching)
 
 ## Edit Distance
 The strings extension library allow for the calculation of
@@ -93,3 +94,7 @@ EditDistance(sitting,kitten):
   "Levenshtein Distance - Wikipedia"
   [Wagner-Fischer algorithm]: https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
   "Wagner-Fischer algorithm - Wikipedia"
+
+## String Searching
+The library now also allows for the searching of substrings
+using the [Knuth-Morris-Pratt](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm) algorithm.
