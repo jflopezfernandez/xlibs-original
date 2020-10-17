@@ -22,34 +22,37 @@
 .\" <http://www.gnu.org/licenses/>.
 .\" %%%LICENSE_END
 .\"
-.TH STRING_LENGTH 3  2020-10-14 "xlibs Manual"
+.TH CALCULATE_EDIT_DISTANCE 3  2020-10-16 "xlibs Manual"
 .SH NAME
-string_length \- calculate the length of a string
+calculate_edit_distance \- calculate the edit distance 
+between two strings
 .SH SYNOPSIS
 .nf
 .B #include <xlibs/strings.h>
 .PP
-.BI "size_t string_length(const char* " string );
+.BI "size_t calculate_edit_distance(edit_distance_type_t " edit_distance_type ", const char* " a ", const char* " b );
 .fi
 .SH DESCRIPTION
 The
-.BR string_length ()
-function calculates the length of the string pointed to by
-.IR string ,
-excluding the null terminator.
-.SH RETURN VALUE
+.B calculate_edit_distance()
+function is the primary interface by which the edit distance
+between two strings may be calculated. The caller specifies
+the desired edit distance metric via the
+.IR edit_distance_type
+parameter.
+.LP
 The
-.BR string_length ()
-function returns the number of characters that precede the
-terminating null character.
-.SH CONFORMING TO
-C11
+.B calculate_levenshtein_distance()
+function uses the Fischer-Wagner algorithm to calculate the
+Levenshtein edit distance between two strings.
+.SH RETURN VALUE
+The return value of the function is an unsigned long integer
+representing the edit distance between the two strings.
+.SH ERRORS
 .SH NOTES
-In accordance with the C standard, the
-.IR string
-argument may be an empty string, but it may not be null.
+.\".SH BUGS
+.SH EXAMPLES
 .SH SEE ALSO
-.BR strlen (3)
 .SH COLOPHON
 This page is part of the initial release of the xlibs C
 strings extension library. A description of the project,
