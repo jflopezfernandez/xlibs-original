@@ -24,15 +24,17 @@
 #define PROJECT_INCLUDES_XLIBS_STRINGS_H
 
 /**
- * String finding algorithms recognized by the library.
+ * String searching algorithms recognized by the library.
  *
- * @enum string_finding_algorithm_t
+ * @enum string_search_algorithm_t
  *
  */
 typedef enum {
     NAIVE_STRING_SEARCH,
-    KNUTH_MORRIS_PRATT
-} string_finding_algorithm_t;
+    RABIN_KARP_STRING_SEARCH,
+    FINITE_AUTOMATON_STRING_SEARCH,
+    KNUTH_MORRIS_PRATT_STRING_SEARCH
+} string_search_algorithm_t;
 
 /*
  * Find a string within a string.
@@ -50,7 +52,7 @@ typedef enum {
  */
 const char*
 __attribute__((nonnull(2,3)))
-find_substring(string_finding_algorithm_t algorithm, const char* needle, const char* haystack);
+find_substring(string_search_algorithm_t algorithm, const char* needle, const char* haystack);
 
 /**
  * Valid Metric Distance Metrics
