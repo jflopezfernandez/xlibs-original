@@ -24,6 +24,35 @@
 #define PROJECT_INCLUDES_XLIBS_STRINGS_H
 
 /**
+ * String finding algorithms recognized by the library.
+ *
+ * @enum string_finding_algorithm_t
+ *
+ */
+typedef enum {
+    NAIVE_STRING_SEARCH,
+    KNUTH_MORRIS_PRATT
+} string_finding_algorithm_t;
+
+/*
+ * Find a string within a string.
+ *
+ * This function searches the haystack for an instance of
+ * the needle.
+ *
+ * @param[in] algorithm The algorithm to use for the search.
+ * @param[in] needle    The substring to look for.
+ * @param[in] haystack  The string to look in.
+ *
+ * @returns Pointer to the located string. If the substring
+ * is not found, the returned pointer is equal to NULL.
+ *
+ */
+const char*
+__attribute__((nonnull(2,3)))
+find_substring(string_finding_algorithm_t algorithm, const char* needle, const char* haystack);
+
+/**
  * Valid Metric Distance Metrics
  *
  * This enum defines the valid edit distance calculation
