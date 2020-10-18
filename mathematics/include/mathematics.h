@@ -126,4 +126,28 @@ int __attribute_const lcm(int a, int b);
  */
 bool_t __attribute_const is_prime(int n);
 
+/*
+ * Modular Exponentiation
+ *
+ * This function uses the binary representation of \f$b\f$
+ * to efficiently perform exponentiation. The method relies
+ * on repeated squaring, as described by Cormen, et. al., in
+ * <I>Introduction to Algorithms</I>. The result of this
+ * function is equal to the following equation.
+ * \f[d = a^b \text{mod }d\f]
+ *
+ *
+ * @param[in] a Number to raise to a power.
+ * @param[in] b The power to raise \f$a\f$ to.
+ * @param[in] d The modulus to reduce \f$a^b\f$ by.
+ *
+ * @returns The result of the above equation.
+ *
+ * @cite cormen_introduction_2009
+ *
+ */
+int
+__attribute__((pure))
+modular_exponentiation(int a, int b, int n);
+
 #endif /** PROJECT_INCLUDES_MATHEMATICS_H */
